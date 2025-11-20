@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Ground
   - Vine
   - Enemy
   - Coin
@@ -13,7 +12,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
