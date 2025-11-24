@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,13 +11,15 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
+    private Animator animator;
+
     //movement related variables
     //moveSpeed and jumpForce are the changeable ones
     [Header("Movement")]
     public float moveSpeed = 7f;
     public float jumpForce = 12f;
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
 
     //vine climbing variables
     //vine speed and vine slide down speed are changeable
@@ -36,7 +39,7 @@ public class PlayerController : MonoBehaviour
     public Vector2 ledgeOffset = new Vector2(0.5f, -0.3f);
     public Vector2 vaultOffset = new Vector2(0.7f, 1.2f);
     public float ledgeGrabDistance = 0.3f;
-    private bool isHanging = false;
+    public bool isHanging = false;
     private bool canGrabLedge = true;
     public Vector2 boxCastSize = new Vector2(0.2f, 0.4f);
     private Vector2 ledgePos; // position of the ledge we grabbed, set by raycast
@@ -50,9 +53,19 @@ public class PlayerController : MonoBehaviour
     UIManager uiManager;
     bool canTakeDamage = true; //damage cooldown
 
+    private Vector3 startingScale;
+
+    private SpriteRenderer spriteRenderer;
+
     //basic initialization
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        animator = GetComponent<Animator>();
+        animator.updateMode = AnimatorUpdateMode.Normal;
+        startingScale = transform.localScale;
+
         uiManager = FindFirstObjectByType<UIManager>(); //too lazy to drag it in rn
         if (uiManager == null)
         {
@@ -61,8 +74,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public bool dead = false;
+
     void Update()
     {
+        if (dead) return;
+
         //check our inputs
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
@@ -87,26 +104,54 @@ public class PlayerController : MonoBehaviour
     //pretty simple
     void HandleFlip()
     {
+        if (isHanging) return; //dont flip while hanging
+
         if (horizontalInput > 0.1f)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = startingScale;
         }
 
         else if (horizontalInput < -0.1f)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-startingScale.x, startingScale.y, startingScale.z);
         }
     }
 
     //handle regular schmegular horizontal movement
     void HandleHorizontalMovement()
     {
+        if (isHanging)
+        {
+            animator.SetBool("isHanging", true);
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isIdle", false);
+            return;
+        }
+
+        if (horizontalInput != 0 && isGrounded)
+        {
+            animator.SetBool("isRunning", true);
+            animator.SetBool("isIdle", false);
+        }
+
+        if (horizontalInput == 0 && isGrounded && !isHanging)
+        {
+            Debug.Log("Idle");
+            animator.SetBool("isIdle", true);
+            animator.SetBool("isRunning", false);
+        }
+
         rb.linearVelocity = new Vector2(horizontalInput * moveSpeed, rb.linearVelocity.y);
     }
 
     //handle jumping logic
     void HandleJump()
     {
+        if (!isGrounded && (rb.linearVelocity.y > 0 || rb.linearVelocity.y < 0))
+        {
+            animator.SetBool("isJumping", true);
+        }
+
         //if we press jump
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -141,7 +186,10 @@ public class PlayerController : MonoBehaviour
 
         //if we are grounded and not on a vine, reset gravity scale
         if (isGrounded && !onVine)
+        {
             rb.gravityScale = 3f;
+            animator.SetBool("isJumping", false);
+        }
     }
 
 
@@ -175,6 +223,7 @@ public class PlayerController : MonoBehaviour
     {
         //we are hanging, turn off all other physics
         isHanging = true;
+        animator.SetBool("isHanging", true);
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0f;
         rb.bodyType = RigidbodyType2D.Kinematic;
@@ -206,6 +255,7 @@ public class PlayerController : MonoBehaviour
     {
         //end hanging state and reset physics
         isHanging = false;
+        animator.SetBool("isHanging", false);
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 3f;
 
@@ -222,6 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         //stop hanging and reset physics
         isHanging = false;
+        animator.SetBool("isHanging", false);
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 3f;
         canGrabLedge = false;
@@ -293,12 +344,48 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && canTakeDamage)
         {
             uiManager.UpdateHealth(-1);
+            if (uiManager.currentHealth <= 0)
+            {
+                animator.SetBool("isIdle", false);
+                animator.SetBool("isRunning", false);
+                animator.SetBool("isJumping", false);
+                animator.SetBool("isHanging", false);
+                animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+                dead = true;
+                animator.SetTrigger("isDead");
+                return; //dont do the rest if dead
+            }
+            DamageFlash();
+
 
             //grant temporary invincibility
             canTakeDamage = false;
-            Invoke("ResetDamageCooldown", 1.5f);
+            Invoke("ResetDamageCooldown", 1f);
             isGrounded = true; //let the player jump again immediately after getting hit
         }
+    }
+
+    public void DamageFlash()
+    {
+        StartCoroutine(FlashRedCoroutine(1f, 0.1f));
+    }
+
+    private IEnumerator FlashRedCoroutine(float duration, float flashInterval)
+    {
+        Color originalColor = spriteRenderer.color;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            // Toggle color
+            spriteRenderer.color = (spriteRenderer.color == originalColor) ? Color.red : originalColor;
+
+            yield return new WaitForSeconds(flashInterval);
+            elapsed += flashInterval;
+        }
+
+        // Ensure it ends with original color
+        spriteRenderer.color = originalColor;
     }
 
     //reset damage cooldown

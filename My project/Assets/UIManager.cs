@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text healthText;
 
     int currentScore = 0;
-    int currentHealth = 3;
+    public int currentHealth = 3;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     public void UpdateHealth(int addHealth)
     {
         healthText.text = (currentHealth += addHealth).ToString();
-        if(currentHealth == 0)
+        if (currentHealth == 0)
         {
             Debug.Log("Player Dead, do something here idk");
             Time.timeScale = 0f; // Pause the game
