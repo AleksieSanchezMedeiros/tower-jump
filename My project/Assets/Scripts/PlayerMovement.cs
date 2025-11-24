@@ -206,30 +206,41 @@ public class PlayerController : MonoBehaviour
             ledgeCheck.position, boxCastSize, 0f, Vector2.right * Mathf.Sign(transform.localScale.x), ledgeGrabDistance, groundLayer);
 
         // If there is a ledge there and can grab it, grab it
-        if (hit.collider != null)
+        if (hit.collider != null && canGrabLedge)
         {
-            //if we would like the player to only grab when falling, change this condition
-            //something like "&& rb.linearVelocity.y < 0f"
-            if (canGrabLedge)
-            {
-                ledgePos = hit.point;
-                StartLedgeGrab();
-            }
+            StartLedgeGrab(hit.collider);
         }
     }
 
     //start ledge grab process
-    void StartLedgeGrab()
+    void StartLedgeGrab(Collider2D ledgeCol)
     {
-        //we are hanging, turn off all other physics
         isHanging = true;
         animator.SetBool("isHanging", true);
+
         rb.linearVelocity = Vector2.zero;
-        rb.gravityScale = 0f;
+        rb.gravityScale = 0;
         rb.bodyType = RigidbodyType2D.Kinematic;
 
-        //set our hang position based on ledge position and offsets set above; tweak in inspector if needed; if it breaks the defaults are in code just reset to that
-        Vector2 hangPos = ledgePos + new Vector2(-transform.localScale.x * ledgeOffset.x, ledgeOffset.y);
+        float dir = Mathf.Sign(transform.localScale.x);
+
+        // Get correct corner of the ledge depending on which side the player is facing
+        Vector2 ledgeCorner;
+
+        if (dir < 0)
+        {
+            // facing right → top-right corner
+            ledgeCorner = ledgeCol.bounds.max;
+        }
+        else
+        {
+            // facing left → top-left corner
+            ledgeCorner = new Vector2(ledgeCol.bounds.min.x, ledgeCol.bounds.max.y);
+        }
+
+        // Now offset the player from the TRUE ledge corner
+        Vector2 hangPos = ledgeCorner + new Vector2(-dir * ledgeOffset.x, ledgeOffset.y);
+
         transform.position = hangPos;
     }
 
