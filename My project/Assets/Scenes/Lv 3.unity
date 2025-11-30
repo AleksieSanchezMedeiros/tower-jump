@@ -1870,6 +1870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303654584}
+  - component: {fileID: 303654585}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Untagged
@@ -1894,6 +1895,30 @@ Transform:
   - {fileID: 826275345}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &303654585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303654583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 923225743}
+  path: {fileID: 826275345}
+  waypoints:
+  - {fileID: 244676045}
+  - {fileID: 1597978658}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 244676045}
+  waypointIndex: 0
+  sprite: {fileID: 291476150}
 --- !u!1 &304824812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,6 +2062,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 323877108}
+  - component: {fileID: 323877109}
   m_Layer: 0
   m_Name: Enemy (7)
   m_TagString: Untagged
@@ -2061,6 +2087,30 @@ Transform:
   - {fileID: 236038645}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &323877109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323877107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 1913805421}
+  path: {fileID: 236038645}
+  waypoints:
+  - {fileID: 107801168}
+  - {fileID: 93608104}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 107801168}
+  waypointIndex: 0
+  sprite: {fileID: 1432641801}
 --- !u!1 &328510343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3174,7 +3224,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 546583209}
-  - component: {fileID: 546583210}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -3198,31 +3247,6 @@ Transform:
   - {fileID: 1697954555}
   m_Father: {fileID: 838023054}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &546583210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 546583208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 1926002497}
-  - {fileID: 195676566}
-  - {fileID: 1589037015}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 195676566}
-  waypointIndex: 1
-  sprite: {fileID: 1697954556}
 --- !u!1 &551557626
 GameObject:
   m_ObjectHideFlags: 0
@@ -4285,7 +4309,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 770245337}
-  - component: {fileID: 770245338}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -4309,30 +4332,6 @@ Transform:
   - {fileID: 1497533055}
   m_Father: {fileID: 2031183616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &770245338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 770245336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 1132656088}
-  - {fileID: 448650307}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 1132656088}
-  waypointIndex: 0
-  sprite: {fileID: 1497533056}
 --- !u!1 &782845584
 GameObject:
   m_ObjectHideFlags: 0
@@ -4786,7 +4785,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 835139137}
-  - component: {fileID: 835139138}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -4810,30 +4808,6 @@ Transform:
   - {fileID: 1031258500}
   m_Father: {fileID: 1502631895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &835139138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 835139136}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 201091191}
-  - {fileID: 1721582626}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 1721582626}
-  waypointIndex: 2
-  sprite: {fileID: 1031258501}
 --- !u!1 &838023053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4843,6 +4817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 838023054}
+  - component: {fileID: 838023055}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Untagged
@@ -4867,6 +4842,31 @@ Transform:
   - {fileID: 223630578}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &838023055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838023053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 546583209}
+  path: {fileID: 223630578}
+  waypoints:
+  - {fileID: 1926002497}
+  - {fileID: 195676566}
+  - {fileID: 1589037015}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 195676566}
+  waypointIndex: 1
+  sprite: {fileID: 1697954556}
 --- !u!1 &923225742
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,7 +4876,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 923225743}
-  - component: {fileID: 923225744}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -4900,30 +4899,6 @@ Transform:
   - {fileID: 291476149}
   m_Father: {fileID: 303654584}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &923225744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 923225742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 244676045}
-  - {fileID: 1597978658}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 244676045}
-  waypointIndex: 0
-  sprite: {fileID: 291476150}
 --- !u!1 &932833258
 GameObject:
   m_ObjectHideFlags: 0
@@ -5083,6 +5058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942983767}
+  - component: {fileID: 942983768}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Untagged
@@ -5107,6 +5083,30 @@ Transform:
   - {fileID: 1686515019}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &942983768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942983766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 1498044053}
+  path: {fileID: 1686515019}
+  waypoints:
+  - {fileID: 18612340}
+  - {fileID: 1287676656}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 1287676656}
+  waypointIndex: 1
+  sprite: {fileID: 382896573}
 --- !u!1 &947084478
 GameObject:
   m_ObjectHideFlags: 0
@@ -7061,7 +7061,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1498044053}
-  - component: {fileID: 1498044054}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -7085,30 +7084,6 @@ Transform:
   - {fileID: 382896572}
   m_Father: {fileID: 942983767}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1498044054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498044052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 18612340}
-  - {fileID: 1287676656}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 1287676656}
-  waypointIndex: 1
-  sprite: {fileID: 382896573}
 --- !u!1 &1502631894
 GameObject:
   m_ObjectHideFlags: 0
@@ -7118,6 +7093,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1502631895}
+  - component: {fileID: 1502631896}
   m_Layer: 0
   m_Name: Enemy (8)
   m_TagString: Untagged
@@ -7142,6 +7118,30 @@ Transform:
   - {fileID: 502805520}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1502631896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502631894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 835139137}
+  path: {fileID: 502805520}
+  waypoints:
+  - {fileID: 201091191}
+  - {fileID: 1721582626}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 1721582626}
+  waypointIndex: 2
+  sprite: {fileID: 1031258501}
 --- !u!1 &1541258501
 GameObject:
   m_ObjectHideFlags: 0
@@ -7673,6 +7673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1574625885}
+  - component: {fileID: 1574625886}
   m_Layer: 0
   m_Name: Enemy (6)
   m_TagString: Untagged
@@ -7697,6 +7698,30 @@ Transform:
   - {fileID: 111898029}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574625886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574625884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 1874060884}
+  path: {fileID: 111898029}
+  waypoints:
+  - {fileID: 1720355372}
+  - {fileID: 277917032}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 1720355372}
+  waypointIndex: 0
+  sprite: {fileID: 2052949996}
 --- !u!1 &1577882827
 GameObject:
   m_ObjectHideFlags: 0
@@ -8139,6 +8164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1609071902}
+  - component: {fileID: 1609071903}
   m_Layer: 0
   m_Name: Enemy (5)
   m_TagString: Untagged
@@ -8163,6 +8189,30 @@ Transform:
   - {fileID: 1724148361}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1609071903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1609071901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 1700557003}
+  path: {fileID: 1724148361}
+  waypoints:
+  - {fileID: 380999540}
+  - {fileID: 4272711}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 4272711}
+  waypointIndex: 1
+  sprite: {fileID: 1812380688}
 --- !u!1 &1632828685
 GameObject:
   m_ObjectHideFlags: 0
@@ -8505,7 +8555,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1700557003}
-  - component: {fileID: 1700557004}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -8529,30 +8578,6 @@ Transform:
   - {fileID: 1812380687}
   m_Father: {fileID: 1609071902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1700557004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700557002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 380999540}
-  - {fileID: 4272711}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 4272711}
-  waypointIndex: 1
-  sprite: {fileID: 1812380688}
 --- !u!1 &1710543097
 GameObject:
   m_ObjectHideFlags: 0
@@ -9283,7 +9308,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1874060884}
-  - component: {fileID: 1874060885}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -9307,30 +9331,6 @@ Transform:
   - {fileID: 2052949995}
   m_Father: {fileID: 1574625885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1874060885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874060883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 1720355372}
-  - {fileID: 277917032}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 1720355372}
-  waypointIndex: 0
-  sprite: {fileID: 2052949996}
 --- !u!1 &1913805420
 GameObject:
   m_ObjectHideFlags: 0
@@ -9340,7 +9340,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1913805421}
-  - component: {fileID: 1913805422}
   m_Layer: 0
   m_Name: Flying enemy (1)
   m_TagString: Untagged
@@ -9364,30 +9363,6 @@ Transform:
   - {fileID: 1432641800}
   m_Father: {fileID: 323877108}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1913805422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913805420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  movingRight: 1
-  monster: {fileID: 0}
-  path: {fileID: 0}
-  waypoints:
-  - {fileID: 107801168}
-  - {fileID: 93608104}
-  loop: 1
-  reversed: 0
-  currentWaypoint: {fileID: 107801168}
-  waypointIndex: 0
-  sprite: {fileID: 1432641801}
 --- !u!1 &1923909577
 GameObject:
   m_ObjectHideFlags: 0
@@ -10050,6 +10025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2031183616}
+  - component: {fileID: 2031183617}
   m_Layer: 0
   m_Name: Enemy (4)
   m_TagString: Untagged
@@ -10074,6 +10050,30 @@ Transform:
   - {fileID: 1172182862}
   m_Father: {fileID: 1840405155}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2031183617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031183615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959df7eea5928a49a7bd4ab4bf58ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  movingRight: 1
+  monster: {fileID: 770245337}
+  path: {fileID: 1172182862}
+  waypoints:
+  - {fileID: 1132656088}
+  - {fileID: 448650307}
+  loop: 1
+  reversed: 0
+  currentWaypoint: {fileID: 1132656088}
+  waypointIndex: 0
+  sprite: {fileID: 1497533056}
 --- !u!1 &2052949994
 GameObject:
   m_ObjectHideFlags: 0
